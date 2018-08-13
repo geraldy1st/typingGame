@@ -57,19 +57,24 @@ const words = [
     'flamingo',
     'respect',
     'motion',
-    'okizeme',
+    'google',
     'tiger',
     'frames',
     'block',
     'promoted',
     'ranking',
+    'python',
     'machine',
     'challenger',
     'perfect',
     'collaboration',
     'deploy',
     'terminal',
-    'array'
+    'array',
+    'vue',
+    'node',
+    'html',
+    'frontend',
 ];
 
 // Initialize Game
@@ -143,7 +148,7 @@ function countdown(){
 // Check game status
 function checkStatus(){
     if(!isPlaying && time === 0){
-        message.innerHTML = 'Game Over!🙅‍🙅🏽🙅🏽';
+        message.innerHTML = 'Game Over!🙅🏽';
         score = -1;
     }
 }
