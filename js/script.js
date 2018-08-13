@@ -10,11 +10,12 @@ const levels = {
 }
 
 // To change level
-const currentLevel = levels.medium;
+const currentLevel = levels.easy;
 
 let time = currentLevel;
 let score = 0;
 let isPlaying;
+let maxScore = 0;
 
 // DOM Elements
 const wordInput = document.querySelector('#word-input');
@@ -103,10 +104,11 @@ function startMatch(){
 
     // If score is -1 display zero
     if(score === -1){
-        scoreDisplay.inner = 0;
+        scoreDisplay.innerHTML = 0;
     }else{
         scoreDisplay.innerHTML = score;
     }
+    // High score seting
     scoreDisplay.innerHTML = score;
 }
 
@@ -152,3 +154,8 @@ function checkStatus(){
         score = -1;
     }
 }
+
+    // localStorage.setItem('highScore', maxScore);
+    // console.log(localStorage.getItem('highScore'));
+    // scoreDisplay.innerHTML = score;
+
