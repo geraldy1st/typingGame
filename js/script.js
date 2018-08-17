@@ -10,12 +10,13 @@ const levels = {
 }
 
 // To change level
-const currentLevel = levels.easy;
+let currentLevel = levels.easy;
 
 let time = currentLevel;
 let score = 0;
 let isPlaying;
-let maxScore = 0;
+let maxScore;
+
 
 // DOM Elements
 const wordInput = document.querySelector('#word-input');
@@ -24,6 +25,10 @@ const scoreDisplay = document.querySelector('#score');
 const timeDisplay = document.querySelector('#time');
 const message = document.querySelector('#message');
 const seconds = document.querySelector('#seconds');
+const highScoreElt = document.querySelector('#high-score');
+const easyBtn = document.querySelector('#easy');
+const mediumBtn = document.querySelector('#medium');
+const hardBtn = document.querySelector('#hard');
 
 const words = [
     'angular',
@@ -77,6 +82,18 @@ const words = [
     'html',
     'frontend',
 ];
+// Seclect level
+function setlevel(e){
+    if(e.target === easyBtn){
+        currentLevel = levels.easy;
+    }else if(e.target === mediumBtn){
+        currentLevel = levels.medium;
+    }else if(e.target === hardBtn){
+        currentLevel = levels.hard;
+    }
+    console.log(currentLevel);
+    init();
+}
 
 // Initialize Game
 function init(){
@@ -90,10 +107,13 @@ function init(){
     setInterval(countdown, 1000);
     // Check game status
     setInterval(checkStatus, 50);
+    maxScore = localStorage.getItem('highScore');
+    highScoreElt.innerHTML = maxScore;
 }
 
 //Start match
 function startMatch(){
+    wordInput.value = wordInput.value.toLowerCase();
     if(matchWords()){
         isPlaying = true;
         time = currentLevel + 1;
@@ -107,9 +127,15 @@ function startMatch(){
         scoreDisplay.innerHTML = 0;
     }else{
         scoreDisplay.innerHTML = score;
+        highScoreElt.innerHTML = score;
+        
+        if(score >= maxScore){
+            localStorage.setItem('highScore',score);
+        }
     }
-    // High score seting
+    maxScore = localStorage.getItem('highScore');
     scoreDisplay.innerHTML = score;
+    highScoreElt.innerHTML = maxScore;
 }
 
 // Match currentWord to wordInput
@@ -122,7 +148,6 @@ function matchWords(){
             message.innerHTML = '🙄';
             return false;
         }
-    
 }
 
 // Pick and show random word
@@ -155,7 +180,6 @@ function checkStatus(){
     }
 }
 
-    // localStorage.setItem('highScore', maxScore);
-    // console.log(localStorage.getItem('highScore'));
-    // scoreDisplay.innerHTML = score;
-
+easyBtn.addEventListener('click', setlevel);
+mediumBtn.addEventListener('click', setlevel);
+hardBtn.addEventListener('click', setlevel);
