@@ -33,7 +33,7 @@ const hardBtn = document.querySelector('#hard');
 const words = [
     'angular',
     'magic',
-    'tech',
+    'brew',
     'bounce',
     'throw',
     'css',
@@ -45,25 +45,25 @@ const words = [
     'laughter',
     'cocktail',
     'spinner',
-    'family',
+    'beer',
     'ninja',
     'javascript',
     'master',
     'program',
     'coding',
     'hero',
-    'hokage',
+    'learning',
     'framework',
     'generate',
     'react',
     'dragon',
     'rush',
-    'language',
+    'api',
     'respect',
     'motion',
     'google',
     'tiger',
-    'frames',
+    'damn',
     'block',
     'ranking',
     'python',
@@ -76,7 +76,29 @@ const words = [
     'node',
     'html',
     'frontend',
+    'grid',
+    'stack',
+    'mac',
+    'console',
+    'ajax',
+    'heroku',
+    'loop',
+    'sql',
+    'php',
+    'data',
+    'npm',
+    'server',
+    'bash'
 ];
+//option
+const settingOption = document.getElementById('optionBtn');
+const menuSlideElt = document.getElementById('menuSlide');
+
+settingOption.addEventListener('click', function(){
+    menuSlideElt.classList.toggle("slideIn");
+});
+
+
 // Seclect level
 function setlevel(e){
     if(e.target === easyBtn){
